@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<!--  java 형식
+	<%
+		int a = 10;
+	%>
+	 -->
+	<script type="text/javascript">
+		/* java의 Date class 아님 */
+		var today = new Date();
+		var year = today.getFullYear();
+		var month = today.getMonth() + 1;
+		var date = today.getDate();
+		var day = today.getDay();
+		
+		document.write(year + "년 " + month + "월 " + date + "일");
+		document.write("<br><br>");
+		
+		document.write("요일: " + day + "<br>")
+		document.write("<hr>")
+		
+		var hours = today.getHours();
+		var minutes = today.getMinutes(); 
+		var seconds = today.getSeconds();
+		
+		document.write(hours + "시 " + minutes + "분 " + seconds + "초");
+	</script>
+
+</body>
+</html>
