@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>주문서 작성하기</title>
+
+<style>
+
+	legend{
+		color:purple;
+	}
+		
+	.aa {
+		float:left;
+		margin:10px;
+		line-height:30px;
+	}
+	
+	.bb {
+		text-align:center;
+		padding:10px;
+	}
+	
+	textarea {
+		margin-top:8px;
+	}
+</style>
+
+</head>
+<body>
+<h1>상품주문서</h1>
+<form action="#">
+<fieldset>
+	<legend><b>개인 정보</b></legend>
+	<div class="aa">
+	<label for="name">이름</label><br>	
+	<label for="tel1">연락처</label>	
+	</div>
+	<div class="aa">
+	<input type="text" name="name" id="name" placeholder="여백없이 입력"><br>
+	<input type="tel" name="tel1" id="tel1" placeholder="연락가능한 번호">
+	</div>
+</fieldset><br>
+
+<fieldset>
+	<legend><b>배송지 정보</b></legend>
+	<div class="aa">
+	<label for="addr">주소</label><br>	
+	<label for="tel2">전화번호</label><br>
+	<label for="memo">메모</label>
+		
+	</div>
+	<div class="aa">
+	<input type="text" name="addr" id="addr"> <br>
+	<input type="tel" name="tel2" id="tel2"> <br>
+	<textarea name="memo" id="memo" cols="40" rows="4"></textarea>
+	</div>
+</fieldset><br>
+
+<fieldset>
+	<legend><b>주문정보</b></legend>
+	<ul type="none">
+		<li>□과타말라 안티구아 (100g) <input type=number value="0">개</li>
+		<li>□인도네시아 만델링 (100g) <input type=number value="0">개</li>
+		<li>□탐나는도다(블렌딩) (100g) <input type=number value="0">개</li>
+	</ul>
+</fieldset>
+<div class="bb">
+<input type="submit" value="주문하기">
+<input type="reset" value="다시 작성">
+</div>
+</form>
+
+
+
+
+</body>
+</html>
