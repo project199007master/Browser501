@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+1~100까지 5의 배수일 경우에는 빨간색 글자, 7의 배수일 경우는 초록색 글자<br>
+5,7 배수일 경우에는 아쿠아색(aqua) 글자로 출력<br>
+
+<script>
+
+var t ="";
+var s_color;
+for(var num=1; num<=100; num++){
+	if(num % 5 == 0 && num % 7 == 0){
+		s_color = "aqua";
+	}
+	else if(num % 5 == 0){
+		s_color = "red";
+	}
+	else if(num % 7 == 0){
+		s_color = "green";
+	}
+	else{
+		s_color = "black";
+	}
+	t += "<span style=\"color:"+ s_color + "\">" + num + "<span><br>";
+	
+}
+document.write(t);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+body{
+	font-family:"맑은 고딕", "고딕", "굴림";
+}
+#wrapper{
+	width:800px;
+
+}
+header {
+	width: 100%;
+	height: 150px;
+	background-color:#f46075;
+
+}
+header nav {
+	width:70%;
+	margin-top: 50px;
+/* float:left 안하면 위의 마진을 body 쪽에서 하는 듯*/
+	float:left;
+}
+
+ul {
+	list-style-type:none;
+}
+
+ul li{
+	float:left;
+	margin:0px 20px;
+
+}
+
+ul li a {
+	text-decoration:none;
+	font-weight:bold;
+}
+
+/* 태그:hover 는 link, visited, hover 순서를 지켜야 함 */
+/* a 태그 누르기 전 상태*/
+ul li a:link{
+	color:white;
+}
+
+/* a 태그 누른 후 상태(방문한 상태)*/
+ul li a:visited {
+	color:white;
+}
+
+/* a 태그 누르려고 마우스 올린 상태*/
+ul li a:hover{
+	color:blue;
+}
+
+header img{
+	float:right;
+}
+
+/* 메뉴 입양 이미지에 마우스 올릴 시 이미지 확대*/
+a img:hover{
+	/* 가로 1.1, 세로 1.1 확대, 1초 걸림*/
+	transform:scale(1.1, 1.1);
+    transition: 1s;
+		/* 태그 모서리 둥글게 하는 속성 */
+    border-radius:20px;
+
+}
+
+aside img:hover{
+	border: 2px solid blue;
+}
+
+#subtitle {
+	/* float 영향을 안 받기위해 clear */
+	clear:both;
+}
+section {
+	width:580px;
+	float:left;
+}
+
+section article{
+
+	width:250px;
+	height:220px;
+	margin:8px;
+	float:left;
+	/* rgba(색,색,색,투명도)*/
+	border: 2px solid rgba(128,128,128,0.3);
+	font-size:0.7em;
+	padding:7px;
+}
+aside {
+	width:210px;
+	height:470px;
+	float:right;
+	background-color:#F0E68C;
+	border: 2px solid green;
+}
+
+aside img {
+	margin:10px 5px 0px 5px;
+}
+
+footer {
+	height:100px;
+	background-color:black;
+	color:white;
+	text-align:center;
+	clear:both;
+	/* 태그 하나에 글이 하나면 태그 height 값만큼 line-height 값을 주면 세로 가운데 정렬 */
+	line-height:100px;
+
+}
+
+</style>
+
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<nav>
+				<ul>
+					<li><a href="#">애완견 종류</a></li>
+					<li><a href="#">입양하기</a></li>
+					<li><a href="#">건강돌보기</a></li>
+					<li><a href="#">더불어살기</a></li>
+				</ul>
+			</nav>
+			<!-- 이미지맵 사용하려다 만 것 -->
+			<!--  <img src="../../img/nav2.png" alt="입양버튼" usemap="#adoption" class="adop_btn">
+			<map name="adoption">
+				<area sharp="rect" coords="2,2,182,147" href="#">
+			</map>
+			-->
+			<a href="#"><img src="../../img/nav2.png" alt="입양버튼"></a>
+		</header>
+		<h2 id="subtitle">강아지 용품 준비하기</h2>
+		<section>
+			<article>
+				<h3>강아지 집</h3>
+				<p>강아지가 편히 쉴 수 있는 포근한 집이 필요합니다. 강아지의 집은 강아지가 다 큰후에도 	계속 쓸 수 있는 집으로 구힙하세요.
+				집을 구입하실 때는 박음질이 잘되어 있는지, 세탁이 간편한 제품인지 꼭 확인하고 고르시는 것이 좋습니다.</p>
+			</article>
+			<article>
+				<h3>강아지 먹이</h3>
+				<p>강아지의 먹이는 꼭 어린 강아지용으로 나와있는 사료를 선택하세요.
+				강아지들은 사람에 비해 성장속도가 8배정도 빠르답니다.
+				따라서 강아지에게는 성장속도에 맞는 사료를 급여하셔야 합니다.
+				사람이 먹는 음식을 먹게 되면 양념과 향신료에 입맛이 익숙해지고, 비만이 될 가능성이 매우 높아집니다.
+				강아지용 사료는 생후 12개월까지 급여하셔야 합니다.</p>
+			</article>
+			<article>
+				<h3>밥그릇, 물병</h3>
+				<p>밥그릇은 쉽게 넘어지지 않도록 바닥이 넓은 것이 좋습니다.
+				물병은 대롱이 달린 것으로 선택하세요.
+				밥그릇에 물을 주게 되면 입 주변에 털이 모두 젖기 때문에 비위생적이므로 대롱을 통해서 물을 먹을 수 있는 물병을 마련하시는 것이 좋습니다.</p>
+			</article>
+			<article>
+				<h3>이름표 목줄</h3>
+				<p>강아지를 잃어버릴 염려가 있으니 산책할 무렵이 되면 이름표를 꼭 목에 걸어주도록 하세요.
+				그리고 방울이 달린 목걸이를 하고자 하실 때는 신중하셔야 합니다.
+				움직일 떄마다 방울이 딸랑 거리면 신경이 예민한 강아지들에게는 좋지 않은 영향을 끼칠 수 있기 때문입니다.</p>
+			</article>
+		</section>
+		<aside>
+			<img src="../../img/1.png" width="200px" height="140px" alt="멍멍이1">
+			<img src="../../img/3.png" width="200px" height="140px" alt="멍멍이3">
+			<img src="../../img/2.png" width="200px" height="140px" alt="멍멍이2">
+
+		</aside>
+		<footer>
+			<p>Copyright 2015 naridog<p>
+		</footer>
+	</div>
+</body>
+</html>

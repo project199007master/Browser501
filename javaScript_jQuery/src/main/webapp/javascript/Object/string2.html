@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+1. 당신의 영문자 이름(소문자 입력하고 대문자 출력)은?<hr>
+
+<script>
+	var name = prompt("당신의 이름은?","");
+	var upper_name = name.toUpperCase();
+	document.write(upper_name,"<br>");	
+</script>
+
+2. 당신의 영문자 연락처는? => 010-1234-****<hr>
+
+<script>
+ 	var tel = prompt("당신의 연락처는?","");
+// 	var index = tel.lastIndexOf("-");
+	
+// 	for(var i=0; i<= index; i++){
+// 		document.write(tel[i]);
+// 	}
+// 	for(var j=index+1; j<tel.length; j++){
+// 		document.write("*");
+// 	}
+
+	var print = tel.substring(0, 7)+"****";
+	document.write(print,"<br>");
+		
+	
+	
+</script>
+</body>
+</html>
