@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.tit {
+		width: 50px;
+		display:inline-block;
+	}
+</style>
+</head>
+<body>
+id, pw를 입력받아 비교한 후(abcd/1234), 
+일치하면 "id님 방문을 환영합니다.", 일치하지 않으면 잘못된 비밀번호 또는 존재하지않는 id입니다.<br><br>
+
+
+<label for="id" class="tit">ID</label>
+<input type="text" id="id"><br>
+<label for="pw" class="tit">PW</label>
+<input type="text" id="pw">
+<button onclick="cl();">로그인</button>
+
+
+
+<script>
+var user_id;
+var user_pw;
+
+// 로그인 버튼 클릭시
+function cl(){
+	
+	user_id = document.getElementById("id").value;
+	user_pw = document.getElementById("pw").value;
+	
+	login(user_id, user_pw);
+}
+
+function login(id, pw){
+	
+	if(id == "abcd"){
+		if(pw == "1234"){
+			document.write("<b>" + id + "</b> 님 방문을 환영합니다.");
+		}
+		else{
+			alert("잘못된 비밀번호입니다.");
+		}
+	}
+	else{
+		alert("존재하지 않는 id입니다.");
+	}
+	
+}
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+label.tit {
+	width: 150px;
+	font-weight: bold;
+	float: left;
+}
+
+header {
+	text-align: center;
+}
+
+header p {
+	display: inline-block;
+	width: 300px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding:10px;
+	font-weight:bold;
+}
+
+ul {
+	list-style-type: none;
+}
+
+section {
+	width: 1000px;
+	margin: 10px auto;
+}
+
+li.input {
+	border-top: 1px solid black;
+	padding: 5px 0px;
+}
+
+#junbok {
+	background: skyblue;
+	color: white;
+	border: 0;
+	height: 27px;
+}
+
+div.centered {
+		text-align:center;
+	}
+	
+	#ex {
+		font-weight:bold;
+	}
+	
+</style>
+
+</head>
+<body>
+	<header>
+		<p id="tit1">MEMBERINFO
+	</header>
+
+	<section>
+		<form>
+			<ul>
+				<li id="ex"><label id="exp">*표시는 필수 입력 표시입니다.</label></li>
+
+				<li class="input"><label class="tit" for="u_id">*ID</label> 
+					<input type="text" id="u_id" required="required" maxlength="14"></li>
+
+				<li class="input"><label class="tit" for="u_name">*이름</label> 
+					<input type="text" id="u_name" required="required"></li>
+
+				<li class="input"><label class="tit" for="u_pw">*비밀번호</label> 
+					<input type="text" id="u_pw" required="required"  maxlength="15"></li>
+
+				<li class="input"><label class="tit" for="u_pw2">*비밀번호확인</label>
+					<input type="text" id="u_pw2" required="required"  maxlength="15"></li>
+
+				<li class="input"><label class="tit"> *생일</label> <input
+					type="text" required="required" size="5" value="2019">년 <input
+					type="text" required="required" size="5" value="12">월 <input
+					type="text" required="required" size="5" value="1">일</li>
+
+				<li class="input"><label class="tit">*E-mail</label> <input
+					type="text" required="required">@ 
+					<input type="text"	required="required" size="12" value="naver.com">
+					<button id="junbok">중복확인</button></li>
+
+				<li class="input"><label class="tit">*휴대폰</label> <input
+					type="text" required="required" size="4">- <input
+					type="text" required="required" size="4">- <input
+					type="text" required="required" size="4"></li>
+
+				<li class="input"><label class="tit" for="addr">*주소</label> <input
+					type="text" id="addr" required="required" size="80"></li>
+
+				<li class="input"><label class="tit" for="addr_d">*상세주소</label>
+					<input type="text" id="addr_d" required="required" size="80"></li>
+
+
+			</ul>
+			<div class="centered">
+				<input type="submit" value="수정"> 
+				<input type="button" value="목록" onclick="history.back(-1);">
+			</div>
+		</form>
+	</section>
+</body>
+</html>

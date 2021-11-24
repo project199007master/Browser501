@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+int[] a = new int {10, 20, 30};
+
+<script>
+		var d = [30, '홍길동', true];
+		document.write(d[0],"<br>");
+		document.write("<hr>");
+		// 반복문 작성1
+		for(var i=0; i<d.length; i++){
+			document.write(d[i],",<br>");
+		}
+		document.write("<hr>");
+		// 반복문 작성2(for~in)
+		for(var j in d){
+			document.write(d[j],"<br>");
+		}
+</script>
+
+</body>
+</html>

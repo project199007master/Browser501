@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script>
+	var i = 0;
+	var auto = setInterval("console.log(++i)",3000) // 설정한 시간 간격으로 함수 반복
+</script>
+<button onclick="clearInterval(auto)">정지버튼</button> <!-- 함수 반복 중지 -->
+</body>
+</html>

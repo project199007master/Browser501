@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script>
+	var num = ["사당", "교대", "방배", "강남"];
+	document.write(num, "<br>");
+	document.write(typeof num,"<br>");
+	document.write("배열을 하나로 결합: " + num.join("-") +"<br>"); // 원본 배열 변환 X
+	document.write("배열을 오름차순 나열: " + num.sort() + "<br>"); // 원본 배열 변환 O
+	document.write("배열을 역으로 출력: " + num.reverse() + "<br>"); // 원본 배열 변환 O
+	document.write("수행: " + num);
+	document.write("<hr>");
+	
+	var num1 = ["사당", "교대", "방배", "강남"];
+	var num2 = ["미금", "정자", "모란", "수서"];
+	document.write("*** splice ***<br>");
+	document.write("원본: " + num1,"<br>");
+	num1.splice(2, 1, "서초", "역삼"); // 2번째 인덱스부터 1개를 제거하고 그 사이에 서초와 역삼을 넣음 
+									 // 원본 배열 변환 O
+	document.write("수행: " + num1,"<br><br>");								 
+	
+	document.write("*** slice ***<br>");								 
+	document.write("원본: " + num1,"<br>");
+	document.write("수행: " + num1.slice(1, 3),"<br>"); // 1번째 부터 2번째(3번 전)까지 잘라서 반환
+	document.write("수행 후 원본: " + num1,"<br><br>");
+								
+	
+	document.write("*** shift ***<br>");
+	document.write("원본: " + num2,"<br>");
+	num2.shift(); // 첫번째 원소 없애기? // 좌로 이동(shift)
+	document.write("수행: " + num2,"<br><br>");
+	
+	document.write("*** unshift ***<br>");
+	document.write("원본: " + num2,"<br>");
+	num2.unshift("미금2");
+	document.write("수행: " + 	num2,"<br><br>");
+</script>
+
+</body>
+</html>

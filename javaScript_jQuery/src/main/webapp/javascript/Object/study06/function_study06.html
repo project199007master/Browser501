@@ -1,0 +1,58 @@
+<!--  w3cSchool.com/js/js_function_invocation.asp 참고
+	Invoking a Function with a Function Constructor
+ -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <script>
+   //함수 Student
+        function Student(name, korean, math, english, science) {
+            // 속성
+            this.n = name;
+            this.k = korean;
+            this.m = math;
+            this.e = english;
+            this.s = science;           
+            
+            // 메서드(합계)
+            this.getSum = function(){
+            	
+            	return this.k + this.m + this.e + this.s;
+            }
+            
+            // 평균
+            this.getAvg = function(){
+            	
+            	return this.getSum() / 4;
+            }
+            
+            // 
+            this.toString = function(){
+            	
+            	return this.n + '\t' +this.getSum()+ '\t' +this.getAvg();
+            }
+		}			
+   			
+
+        // 학생 정보 배열을 만듭니다.        
+		var students = [];
+        students.push(new Student('hong1',87,98,88,95));
+        students.push(new Student('hong2',100,100,100,100));
+        
+        // 출력.
+        var output = '이름\t총점\t평균\n';
+		for(var i in students){
+			output += students[i].toString()+"\n";
+		}
+		alert(output);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
