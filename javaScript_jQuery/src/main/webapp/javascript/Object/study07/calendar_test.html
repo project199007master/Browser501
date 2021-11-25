@@ -5,8 +5,165 @@
 <title>2019년 달력</title>
 <SCRIPT>
 
+// 요일 배열
+var days = ['일','월','화','수','목','금','토'];
+
+// 출력할 날짜 변수
+var num = 1;
+var d = new Date();
+
+var year = d.getFullYear(); // 지금 년도 구하기
+var month = d.getMonth();   // 지금 월 구하기
+var date = d.getDate();     // 지금 일 구하기
+var day = d.getDay();       // 지금 요일 구하기
+
+var startPos = getStartPos(year,month); // 달력에서 시작될 지점
+var lastDate = getLastDate(year,month); // 지금 달의 마지막 날짜
+
+// 각 태그에 적용할 inline style 들
+var title_style = "color:darkblue;" + "background-color:#E6DFDF;" + "text-align:center;" + "height:80px";
+var day_style = "color:darkblue;" + "background-color:#FFEFFF;" + "text-align:center;" + "width:100px;" + "height:80px;" + "font-weight:bold";
+var date_style = "background-color:#FFEFEE;" + "vertical-align:top;" + "text-align:right;" + "height:80px;";
+var today_style = "color:red";
+var time_style = "color:purple;" + "text-align:center";
+var paddings = "padding:10px";
+
+// 테이블 생성할 명령 문자열 변수
+var table_make = "<table style='border-spacing: 3px'>";
+
+// 달력 중 지금 년도와 월을 출력하는 타이틀 부분 생성 함수
+function calendar_titleRow(){	
+	
+	table_make += "<tr><td colspan='7' style=" + title_style + "><h1>" + year + "년 "+ month + "월</h1></td>"; 
+	
+}
+
+// 달력 중 요일 부분을 생성할 함수
+function calendar_dayRow(){	
+	table_make += "<tr>";
+	for(var col=0; col<7; col++){
+		table_make += "<td style=" + day_style + ">" + days[col] + "</td>";
+	}
+	table_make += "</tr>"
+}
+
+// 달력 중 날짜가 시작되는 첫번째 줄을 생성할 함수
+function calendar_dateRow1(){
+	for(var col=0; col<7; col++){
+		if(startPos > col){			
+			table_make += "<td></td>";
+		}
+		else{
+			
+			var num_str = "<span>" + num + "</span>"; 
+			
+			if(date == num){
+				
+				num_str = "<span style=" + today_style + ">" + num + "</span><br><div style=" + time_style + ">" + getTime() + "</div>";
+			}
+			
+			table_make += "<td style=" + date_style + ">" + num_str + "</td>";
+			num++;
+		}
+	}	
+}
+
+// 달력 중 첫번째 줄을 제외한 나머지 부분을 생성할 함수
+function calendar_dateRow2(){
+	// 필요한 행 개수 구하기(마지막 날짜 - (첫 줄에서 빠진 날 수) / 7) 의 ceil(무조건 올림)
+	var needRow = Math.ceil((lastDate - (7-startPos)) / 7);
+	for(var row=0; row < needRow; row++){
+		table_make += "<tr>";
+		for(col=0; col<7; col++){
+			if(num <= lastDate){
+							
+				var num_str = "<span>" + num + "</span>"; 
+				
+				if(date == num){
+				
+					num_str = "<span style=" + today_style + ">" + num + "</span><br><div style=" + time_style + ">" + getTime() + "</div>";
+				}
+				
+				table_make += "<td style=" + date_style + ">" + num_str + "</td>";
+			
+				num++;
+				
+			}
+			else{
+				table_make += "<td></td>";
+			}
+		}
+		table_make += "</tr>";
+	}
+}
+
+// 지금 달의 마지막 날짜를 리턴하는 함수
+function getLastDate(year, month){
+	
+	var lastDays = new Array(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+	var isIntercalation;
+
+	 if (year % 4 == 0) 
+		 isIntercalation = true 
+	 else 
+		 isIntercalation = false 
+
+	 lastDays[1] = (isIntercalation) ? 29 : 28 
+		
+	 return lastDays[month]
+	
+}
+
+// 지금 달의 시작 점을 리턴하는 함수
+function getStartPos(year, month){
+	
+	var firstYMD = new Date(year,month,1);
+	
+	return firstYMD.getDay();
+}
+
+// 출력할 시간 문자열을 리턴하는 함수
+function getTime(){
+	
+	var hour = d.getHours();
+	var printHour = hour;
+	var min = d.getMinutes();
+	var printMin = min;
+	var ampm = "오전";
+	
+	if(hour > 12){
+		printHour = hour-12;		
+		ampm = "오후";
+	}
+	
+	if(printHour < 10){
+		printHour = "0" + printHour;
+	}
+	
+	if(printMin < 10){
+		printMin = "0" + printMin;
+	}
+	
+	
+	return ampm + "<br>" + printHour+":"+printMin;
+}
 
 
+calendar_titleRow();         // 달력 타이틀 부분 생성
+calendar_dayRow();  		 // 달력 요일 부분 생성
+calendar_dateRow1();		 // 달력 첫번쨰 날짜줄 생성
+calendar_dateRow2(); 		 // 달력 나머지 날짜줄 생성
+table_make += "</table>";    // 마무리
+document.write(table_make);  // 생성
+
+
+/* 값 나오는 확인용  */
+//document.write("시작요일:" + startPos);
+//document.write(lastDate);
+//document.write("줄:" + Math.ceil((lastDate - (7-startPos)) / 7));
+//document.write(d.getHours());
+//document.write(d.getMinutes(),"<br>");
+//document.write(getTime());
 
 </SCRIPT>
 </head>
