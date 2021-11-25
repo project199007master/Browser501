@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+EVENT:: Browser에서 방문객(client)이 취하는 모든 동작(action)을 Event라 함<br>
+event handler(이벤트 핸들러):: event가 발생했을 때 javascript execution statement을 실행하는 것
+2가지 방식으로 click 이벤트와 mouseover 이벤트를 등록 시켜 배경색 바꾸기<br>
+
+<script>
+
+	var color = ["white", "yellow", "aqua","purple"];
+	var i = 0;
+	function colorBg(){
+	
+		i++;
+		if(i >= color.length)
+			i = 0;
+		// document.getElementsByTagName(태그)[index] <= 배열 리턴, index 설정할 것
+		document.getElementsByTagName("body")[0].style.backgroundColor=color[i];
+		var bodyTag = document.getElementsByTagName("body")[0];
+		bodyTag.style.backgroundColor=color[i];
+		
+	}
+	
+	function change(obj){
+		obj.innerHTML = "버튼3(포커스 됨)";
+	}
+	
+	function change2(obj){
+		obj.innerHTML = "버튼3(포커스 해제)";
+	}
+	
+	window.onload = function(){
+		// btn2
+		document.getElementById("btn2").onclick = function(){
+			colorBg();
+		}
+		
+		// btn4
+		document.getElementById("btn4").onmouseover = function(){
+			colorBg();
+		}
+	}
+	
+</script>
+
+<button onclick="colorBg();">버튼1</button>
+<button id="btn2">버튼2</button>
+<button onfocus='colorBg()' onblur="colorBg()">버튼3</button>
+<button id="btn4">버튼4</button>
+
+
+</body>
+</html>
