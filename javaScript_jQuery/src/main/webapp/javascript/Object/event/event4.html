@@ -42,6 +42,10 @@
 </script>
 
 </head>
+
+<!-- onsubmit-"return submit_chk(): 눌렀을 때 submit_chk값을 리턴하겠다.
+	true가 리턴되면 서버로 전송이 되는 것이고, false라면 서버로 전송이 되지 않는다. 즉 action 실행 유무
+	return이 없다면 action이 함수 리턴과는 관계없이 실행됨.  -->
 <body onload="document.f1.user_name.focus();">
 	<form action="#" method="post" name="f1" onsubmit="return submit_chk(this);" onreset="reset_chk(this);">
 		<fieldset>
