@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<img src ="" id="img1">
+	<p id="browser_info"></p>
+	<script>
+		var img_variable = document.getElementById("img1");
+		var str = document.getElementById("browser_info");
+		var b_width = window.innerWidth;
+		var b_height = window.innerHeight;
+		
+		img_variable.src = "intern.jpg";
+		img_variable.width = "317";
+		img_variable.hegiht = "512";
+		img_variable.style.border = "2px solid blue";
+		img_variable.onclick = function(){
+			window.close();
+		}
+		str.innerHTML = "Browser inner window width: " + b_width + ", height: " + b_height;
+	</script>
+</body>
+</html>

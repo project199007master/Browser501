@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+
+var b_width = window.innerWidth;
+var b_height = window.innerHeight;
+var w = ((b_width-400)/2);
+var h = ((b_height-600)/2);
+var st = "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=400, height=600, left=" + w + " top=" + h;
+window.onload = function openPopup(){	
+	
+    window.open("movie_pop.html", "new", st);
+}
+
+</script>
+</body>
+</html>

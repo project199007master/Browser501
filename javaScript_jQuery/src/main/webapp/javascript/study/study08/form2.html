@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DOM 객체</title>
+<style>
+.form_ul {
+	list-style-type: none;
+}
+
+ul {
+	padding: 0px;
+}
+
+#form_ul>li {
+	margin-bottom: 10px;
+}
+
+#terms {
+	width: 350px;
+	height: 50px;
+	overflow: auto;
+	border: 1px solid grey;
+}
+</style>
+
+</head>
+<body>
+	# 추가 적용 사항 #<br><br> 
+	- 비밀번호 일치 여부 텍스트 출력<br>
+	- 과목 선택 box의 선택 여부에 따라 전체 선택 box 해제 동작 (과목 선택이 하나라도 해제되면 전체선택도 해제)<br>
+	- 등록완료 버튼 후 과목 선택사항 확인창 출력<br>
+	<hr>	
+	<form action="#" method="get" name="f1" onsubmit="return submits();">
+		<fieldset>
+			<legend>폼 요소1</legend>
+			<ul class="form_ul">
+				<li><label for="pw" class="tit">비밀번호</label> 
+				<input type="password" id="pw" name="pw" required="required" onblur="check_pw1(this);"></li>
+				<li><span id="msg1" style="color: red"></span></li>
+
+				<li><label for="pw_check" class="tit">비밀번호 확인</label> 
+				<input type="password" id="pw_check" name="pw_check"  required="required" onblur="check_pw2(this);"> 
+				<input type="submit" value="확인"></li>
+				<li><span id="msg2" style="color: red"></span></li>
+			</ul>
+		</fieldset>
+	</form>
+	
+	<form action="#" method="get" name="f2" onsubmit="return submit2();">
+		<fieldset>
+			<legend>폼 요소2</legend>
+			<div id="terms">회사는 법령이 정하는 바에 따라 "회원"의 개인정보를 보호하기 위해 노력합니다.
+				개인정보의 보호 및 사용에 대해서는 관련법 및 회사의 개인정보취급방침이 적용됩니다.</div>
+			<ul class="form_ul">
+				<li><input type="checkbox" id="agree" name="agree" value="agree">약관에 동의합니다.</li>
+				<li><br></li>
+				<li><input type="checkbox" id="select_all" onclick="selectAll(this);">전체선택
+				<ul class="form_ul">
+					<li><input type="checkbox" id="subject1" name="subject1" value="subject1" onclick="selectOne();">과목1</li>
+					<li><input type="checkbox" id="subject2" name="subject2" value="subject2" onclick="selectOne();">과목2</li>
+					<li><input type="checkbox" id="subject3" name="subject3" value="subject3" onclick="selectOne();">과목3</li>
+				</ul>
+				</li>
+			</ul>
+			<input type="submit" value="등록완료" name="reg">
+			<button type="button" name="reg_cancel" onclick="cancel_reg();">등록 취소</button>
+		</fieldset>
+	</form>
+
+	<script>
+		var isPwEqual = false; // 비밀번호 일치여부
+		var pw_input_box = f1.pw; // 비밀번호 inputbox 변수
+		var pw_check_input_box = f1.pw_c; // 비밀번호 확인 inputbox 변수
+		
+				
+		
+		// 첫 번째 폼요소에 전송버튼 눌렀을 때
+		function submits(){
+			
+			// isPwEqual: 비밀번호 일치 확인, 비밀번호 일치 및 입력값("")의 여부
+			if(isPwEqual){
+				alert("전송 실행");
+				return true;
+			}
+			
+			alert("전송 미실행");
+			return false;
+		}
+		
+		// 비밀번호 inputbox 에 적용할 함수
+		function check_pw1(obj){
+			
+			var msg = document.getElementById("msg1");
+
+			
+			if (obj.value == "") {
+				msg.innerHTML = "비밀번호를 입력하세요.";			
+			} 
+			else {
+				msg.innerHTML = "";
+			}
+		}
+
+		// 비밀번호 확인 inputbox에 적용할 함수
+		function check_pw2(obj) {
+			var pw = document.getElementById("pw").value;
+			var msg = document.getElementById("msg2");
+
+			// 입력값이 "" 이면 텍스트 창에 내용을 넣고 전송을 못하게 false 값을 줌
+			if (obj.value == "") {
+				msg.innerHTML = "비밀번호를 입력하세요.";
+				isPwEqual = false;
+			} 
+			else {
+
+				// 입력값이 ""이 아니고 앞서 입력한 비밀번호와 일치하지 않은 경우
+				if (pw != obj.value) {
+					msg.innerHTML = "비밀번호 불일치";
+					isPwEqual = false;
+				} 
+				// 입력값이 ""이 아니고 앞서 입력한 비밀번호와 일치하는 경우
+				else {
+					msg.innerHTML = "비밀번호 일치";
+					isPwEqual = true;
+				}
+			}
+
+		}				
+		
+		
+		/*  ######### 두번 째 FORM(폼) 코드 부분 #########   */
+		
+		// 전체 선택 checkbox 변수
+		var subject_checkboxAll = document.getElementById("select_all");
+		
+		// 각 과목 선택 checkbox 변수를 담을 배열 선언
+		var subject_check_list = new Array();
+		subject_check_list[0] = document.getElementById("subject1");
+		subject_check_list[1] = document.getElementById("subject2");
+		subject_check_list[2] = document.getElementById("subject3");
+		
+	
+		// 전체 선택을 눌렀을 떄 적용할 함수
+		function selectAll(obj){
+			
+			if(obj.checked){			
+				for(var i=0; i<subject_check_list.length; i++){
+					subject_check_list[i].checked = true;
+				}
+			}  	
+			
+		}
+		
+		// 각 과목 checkbox에 적용할 함수
+		function selectOne(){
+		
+			var isAllCheck = true;
+			// checkbox 배열을 돌면서 하나라도 체크가 안 되어있다면 전체선택 checkbox를 해제
+			for(var i=0; i<subject_check_list.length; i++){
+				if(!subject_check_list[i].checked){
+					subject_checkboxAll.checked=false;
+					isAllCheck = false;
+					break;
+				}
+			}
+			
+			// checkbox 배열을 돌면서 체크가 전부 되어있다면 전체선택 checkbox에 체크 표시
+			if(isAllCheck){
+				subject_checkboxAll.checked=true;
+			}
+		}		
+
+		// 두 번째 폼요소에 전송버튼 눌렀을 때: 체크되지 않았으면 "약관에 동의해야합니다" alert() 하기
+		function submit2(){
+			
+			// 약관 동의 여부
+			var isAgree = f2.agree.checked;
+			// 과목 선택을 하나도 안했는지 그 여부를 저장할 변수
+			var isNotAllSelect = true;
+			//alert(isAgree);
+			
+			// 약관에 동의 하였는가?
+			if(isAgree){
+				var str = "*** 선택사항 확인 ***\n\n";
+				for(var i=0; i<subject_check_list.length; i++){
+					if(subject_check_list[i].checked){
+						str += (i+1) +". " + subject_check_list[i].value+ "\n";
+						// 하나라도 과목을 선택했다면 선택안함 변수(inNotAllSelect)에 false값 넣음
+						isNotAllSelect = false;	
+					}
+				}
+				// 과목을 하나라도 선택하지 않았다면 경고창 출력
+				if(isNotAllSelect){
+					alert("과목을 하나라도 선택해주세요.");
+					return false;
+				}
+				
+				// 등록 전 선택사항 확인창 출력
+				// 확인 단추 : true 값 리턴 / 취소 버튼 false값 리턴
+				var reCheck = confirm(str);
+				
+				
+				if(reCheck){
+					alert("등록 실행");
+				}
+				else{
+					alert("등록 사항 재확인");	
+				}
+				return reCheck;
+			}
+			else{
+				alert("약관에 동의해야 합니다.");
+				return false;
+			}
+		}
+		
+		function cancel_reg(){
+			alert("등록 취소 누름");
+		}
+		//]]>
+	</script>
+</body>
+</html>
