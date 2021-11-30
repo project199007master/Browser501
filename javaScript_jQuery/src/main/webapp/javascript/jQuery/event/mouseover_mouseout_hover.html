@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(function(){
+		$("#btn1").mouseover(function(){
+			$("p").css({backgroundColor:"yellow"});
+			
+		});
+		
+		$("#btn1").mouseout(function(e){
+			
+			$("p").css({backgroundColor:"purple"});
+		});
+		
+		$("#btn2").hover(function(){
+			$("p").css({backgroundColor:"yellow"});
+		},function(){
+			$("p").css({backgroundColor:"aqua"});
+		}); 
+	});
+</script>
+</head>
+<body>
+	<button id="btn1">mouseover/mouseout</button></button><br>
+	<button id="btn2">hover</button></button><br>
+		
+	<p>내용......</p>
+
+
+</body>
+</html>
