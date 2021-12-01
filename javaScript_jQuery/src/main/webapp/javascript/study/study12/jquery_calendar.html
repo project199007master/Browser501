@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="tailofmoon">
+	<title>Calendar </title>	
+
+	<style>
+					
+		table{
+			margin:auto;
+			background:grey;
+			color:white;
+			border-collapse:collapse;
+			
+		}
+		
+		td {
+			text-align:center;
+		}
+		
+		th,td {
+			border: 1px solid white;
+			
+		}
+		
+		.tit {
+			color:orange;
+		}
+		
+		a {
+			text-decoration:none;			
+		}
+		
+		a:link{
+		color:white;}
+		
+		a:visited {
+			color:white;
+		}
+	</style>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+
+<div id="calendar_wrap">
+	
+</div> 
+
+<script>
+
+/*********************** 함수 정의 부분 ***************************/
+/*********************** 실제 코드 실행 부분은 밑에 ↓↓↓↓↓(198줄 부터) ***************************/
+ 
+
+function get_Day(){
+	
+	var Last_Mon = new Array(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+	var Mon2
+
+	if (calYear % 4 == 0) 
+		Mon2 = true 
+	else 
+		Mon2 = false 
+
+	Last_Mon[1] = (Mon2) ? 29 : 28 
+	
+	return Last_Mon[calMonth]
+}
+
+function return_calYM(){
+	
+	return calYear + "년 " + (calMonth + 1) + "월";
+} 
+
+
+function make_day(){
+	
+	var tag = "";
+	var weekDay = new Array("일", "월", "화", "수", "목", "금", "토");
+	tag += "<tr>";
+	for(var col=0; col<weekDay.length; col++){
+		tag += "<td><b>" + weekDay[col] + "</b></td>";
+	}
+	tag += "</tr>";
+	
+	//alert(tag);
+	
+	return tag;
+}
+
+function make_date(){
+	
+	var digit = 1;//일
+	var curCell = 1;
+	var firstDayInstance = new Date(calYear,calMonth,1);
+	var firstDay = firstDayInstance.getDay() + 1;
+	var lastDate = get_Day();
+	
+	var tag = "";
+	
+	for(var row=1; row<=Math.ceil((lastDate+firstDay-1)/7); row++){
+		tag += "<tr>";
+		
+		// 시작일 ~ 말일
+		for(var col=1; col<=7; col++){
+			
+			if(curCell < firstDay || digit > lastDate){
+				tag += "<td>&nbsp;</td>";
+				curCell++;
+			}
+			else{
+				
+				tag += "<td>";					
+				tag += digit;				
+				tag += "</td>";
+				digit++;
+			}
+		}
+		tag += "</tr>";
+	}
+		
+	return tag;
+}
+
+function make_move(){
+	
+	var tag ="<tr><td colspan=7>";
+	var btn1 = "<a href='#'>이전 달</a>";
+	var btn2 = "<a href='#'>다음 달</a>";
+	
+	tag += btn1 + "&nbsp;&nbsp;&nbsp;&nbsp;" + btn2; + "</td></tr>";
+	
+	return tag;
+}
+
+function next_m(){
+	
+	if(calMonth < 11){
+		calMonth++;
+	}
+	else{
+		calMonth = 0;
+		calYear++;
+	}
+	
+	//alert(calMonth);
+}
+
+function prev_m(){
+	if(calMonth > 0){
+		calMonth--;
+	}
+	else{
+		calMonth = 11;
+		calYear--;
+	}
+	//alert(calMonth);
+}
+
+function make_cal(){
+	var txt = $("<table width=500></table>");
+	// 테이블 태그를 div 안에 넣는다.
+	$("#calendar_wrap").append(txt);
+	// 테이블 태그 안에 타이틀 부분(날짜 부분)을 넣는다.
+	$("table").append("<tr><th colspan=7><h2>"+ return_calYM() + "</h2></th></tr>");
+	// 타이틀 부분에 클래스를 넣어 주황색 글씨로 바꾼다
+	$("th").addClass("tit");
+	// 요일 부분 만들어서 넣음
+	$("table").append(make_day());
+	// 날짜 부분 만들어서 넣음
+	$("table").append(make_date());
+	// 날짜 이동 부분 만들어 넣음
+	$("table").append(make_move());
+	
+	// tr의 첫번째 자식의 글자색을 빨간색으로...
+	$("tr td:first-child").css("color","red");
+
+	// 날짜 이동 클릭 이벤트 
+	$("a").eq(0).click(function(){
+		prev_m();
+		$("#calendar_wrap").html("");
+		make_cal();
+		return false;});
+	
+	$("a").eq(1).click(function(){
+		next_m();
+		$("#calendar_wrap").html("");
+		make_cal();
+		return false;});}
+
+</script>
+ 	
+<script>
+
+/*********************** 실제 코드 실행 부분 ***************************/
+var dateObject = new Date();
+var calYear = dateObject.getFullYear();
+var calMonth = dateObject.getMonth();
+
+// 달력 생성	
+$(function(){	
+		make_cal();
+	
+});	
+
+</script>
+</body>
+</html>

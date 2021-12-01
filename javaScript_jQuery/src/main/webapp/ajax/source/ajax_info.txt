@@ -1,0 +1,6 @@
+<h2>AJAX</h2>
+<b>AJAX is not a programming language.</b>
+
+<b>AJAX is a technique for accessing web servers from a web page.</b>
+
+<b>AJAX stands for Asynchronous JavaScript And XML.</b>
