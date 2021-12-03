@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
+  <!--서블릿 매핑방법2: web.xml 방식-->
+  <servlet>
+	<servlet-name>ServletTest</servlet-name>
+	<servlet-class>StartXML</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>ServletTest</servlet-name>
+	<url-pattern>/ch02_start/Start_xml</url-pattern>
+  </servlet-mapping>			
 </web-app>

@@ -7,7 +7,7 @@
 <title>request 내장 객체 예제</title>
 </head>
 <body>
-	<form action="requestResult.jsp">
+	<form action="requestResult.jsp" method="post">
 		<fieldset><h2>학번, 이름, 학년, 선택과목을 입력하는 폼</h2>
 		학번: <input type="text" name="num"><br>
 		
