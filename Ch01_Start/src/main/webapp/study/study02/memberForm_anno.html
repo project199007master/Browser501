@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getParameterNames 실습</title>
+<style>
+	
+	.tit1 {
+		float:left;
+	}	
+</style>
+<script>
+	function btn_click(){
+		alert("목록 버튼 눌림");
+	}
+</script>
+</head>
+<body>
+<h2>getParameterNames 실습(ANNO)</h2>
+<form action="member_anno" method="post">
+	<input type="hidden" name="action" value="write">
+	<label for="title" class="tit1">제목</label>
+	<input type="text" id="title" name="title"><br>
+	<label for="title" class="tit1">작성자</label>
+	<input type="text" id="author" name="author"><br>
+	<label for="title" class="tit1">내용</label>
+	<textarea rows="10" cols="32" id="content" name="content"></textarea><br>
+	<input type="submit" value="저장">
+</form>
+<a href="#" onclick="btn_click();">목록</a>
+
+</body>
+</html>

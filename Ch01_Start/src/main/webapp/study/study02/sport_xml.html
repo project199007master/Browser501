@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getParameterValues 실습</title>
+</head>
+<body>
+<h2>getParameterValues 실습(XML)</h2>
+<form action=Sport_xml method="post">
+	<fieldset>
+		<legend>좋아하는 운동 및 성별</legend>
+		<ul>
+			<li>
+				<label for="sport1">야구</label>
+				<input type="checkbox" name="sport" id="sport1" value="야구">
+				<label for="sport2">축구</label>
+				<input type="checkbox" name="sport" id="sport2" value="축구">
+				<label for="sport3">농구</label>
+				<input type="checkbox" name="sport" id="sport3" value="농구">
+			</li>
+			<li>
+				<label for="male">남</label>
+				<input type="radio" name="gender" id="male" value="남자" checked>
+				<label for="female">여</label>
+				<input type="radio" name="gender" id="female" value="여자">
+			</li>	
+			<li>
+				<input type="submit" value="전송">
+			</li>
+		</ul>
+	</fieldset>
+</form>
+</body>
+</html>
