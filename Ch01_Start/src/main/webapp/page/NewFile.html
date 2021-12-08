@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(function(){
+		$("#id").focus();
+	});
+	
+</script>
+</head>
+
+
+<body>
+
+<form action="join.jsp" method="post">
+	id: <input type="text" name="id" required="required" id="id"><br>
+	pw :<input type="password" name="pw" required="required"><br>
+	<input type="submit" value="로그인">
+	
+	<!--  
+	1) submit하면 join.jsp를 실행, method는 post
+2) 서비할 때 암호와 암호 확인이 같은지 체크
+3) 항목 필수여부 체크, 처음 커서는 id에 위치
+-->
+</form>
+</body>
+</html>
+
