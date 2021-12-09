@@ -20,11 +20,11 @@ session.setAttribute("session", "session1");
 application.setAttribute("application", "application1");
 %>
 
-<%
+<%-- <%
 	// request영역에 데이터 저장시 forward
 	RequestDispatcher d = request.getRequestDispatcher("other_scope.jsp");
 	d.forward(request, response);
-%>
+%> --%>
 
 <hr>
 pageContext out: <%= pageContext.getAttribute("page") %><br>

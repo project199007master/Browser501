@@ -17,8 +17,16 @@ application :: Jsp 기본객체 중의 하나<br>
 서버정보:: <%= application.getServerInfo() %><br>
 서블릿 메이저 버젼: <%= application.getMajorVersion() %><br>
 서블릿 마이너 버젼: <%= application.getMinorVersion() %><br>
-<%
+<hr>
 
+
+[getInitParameter()]::<br>
+<%
+	String param1 = application.getInitParameter("logEnabled");
+	String param2 = application.getInitParameter("debugLevel");
+	
+	out.println("logEnabled: " + param1 + "<br>" + "debugLevel: " + param2);
 %>
+
 </body>
 </html>
