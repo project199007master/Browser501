@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/ch09_cookie/study091/CartSaveCookie")
+@WebServlet("/ch09_cookie/study091/CartSaveCookie2")
 public class CartSaveCookieServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
