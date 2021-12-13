@@ -14,10 +14,10 @@ session Scope: browser상태에서 페이지 이동시 사용(변수 공유)<br>
 application Scope: 서버가 시작부터 종료까지 사용(변수 공유 : 방문자수)<br><br>
 
 <%
-pageContext.setAttribute("page", "page1");
-request.setAttribute("request", "request1");
-session.setAttribute("session", "session1");
-application.setAttribute("application", "application1");
+pageContext.setAttribute("page", "page1"); // 같은 페이지 내에 동작
+request.setAttribute("request", "request1"); // forward, include 동작
+session.setAttribute("session", "session1"); // 같은 브라우저 내에서
+application.setAttribute("application", "application1"); // 모든 사이트 방문자
 %>
 
 <%-- <%

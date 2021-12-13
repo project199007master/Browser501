@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+</script> 
+<script>
+	$(document).ready(function(){
+		$("#submit").on("click",function(){
+			if($("#car1").is(":checked")==false){
+				if($("#car2").is(":checked")==false){
+					if($("#car3").is(":checked")==false){
+						alert("체크후 진행해 주세요");
+						$("form").attr("action","#");
+					}
+				}
+				
+			}
+		});
+	});
+</script>
+<h1>상품 리스트</h1>
+<form action="CartSaveCookie" method="get">
+	<input type="radio" name="car" value="BMW" id="car1"><b>BMW</b><br>
+	<input type="radio" name="car" value="SM5" id="car2"><b>SM5</b><br>
+	<input type="radio" name="car" value="K7" id="car3"><b>K7</b><br>
+	<input type="submit" value="카트저장" id="submit">
+</form>
+</body>
+</html>
