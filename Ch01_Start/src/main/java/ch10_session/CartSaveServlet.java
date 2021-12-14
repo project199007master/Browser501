@@ -2,6 +2,9 @@ package ch10_session;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,41 +12,48 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
-@WebServlet("/ch09_cookie/study091/CartDeleteCookie2")
-public class CartDeleteCookieServlet extends HttpServlet {
+@WebServlet("/ch10_session/study13/CartSave")
+public class CartSaveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 		doPost(request, response);
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		out.println("<html><body>장바구니 비웠음"+"<br>");
+		String product = request.getParameter("product");
 		
-		Cookie[] cookies = request.getCookies();
-				
-		if(cookies != null) {
-			for(Cookie c : cookies) {
-				
-				c.setMaxAge(1);
-				response.addCookie(c);
-			}
-		}
-		else {
-			out.println("장바구니 비었음<br><br>");
-		}
-				
-		out.println("<a href='cookie.html'>상품 선택 페이지</a><br>");
+		// 세션 객체를 받아오거나 새로 만들어 리턴 
+		HttpSession session = request.getSession();
 		
+		ArrayList<String> list = (ArrayList<String>)session.getAttribute("product");
+		if(list == null) {
+			list = new ArrayList<String>();
+			list.add(product);
+		}else {
+			list.add(product);
+		}
+		
+		session.setAttribute("product", list);
+		
+		
+		out.println("<html><body>Product추가"+"<br>");
+		out.println("<a href='CartBasket'>장바구니 보기</a>");
 		out.println("</body></html>");
+		
+		
 	}
+	
+	
+	
+	
 
 }

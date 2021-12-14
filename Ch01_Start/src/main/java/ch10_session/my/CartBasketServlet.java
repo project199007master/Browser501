@@ -1,4 +1,4 @@
-package ch10_session;
+package ch10_session.my;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,14 +9,14 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
-@WebServlet("/ch09_cookie/study091/CartSaveCookie2")
-public class CartSaveCookieServlet extends HttpServlet {
+@WebServlet("/ch10_session/study13/CartBasket123")
+public class CartBasketServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		doPost(request, response);
 	}
 
@@ -25,24 +25,25 @@ public class CartSaveCookieServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		String product = request.getParameter("product");
-		Cookie[] cookies = request.getCookies();
+		// 세션을 새로 생성할 필요가 없으므로 false값을 줘서 세션을 받거나 null로 리턴 
+		HttpSession session = request.getSession(false);
 		
-		Cookie c = null;
-		if(cookies == null || cookies.length == 0) {
-			c = new Cookie("product", product);
+		out.println("<html><body>장바구니 리스트"+"<br>");
+	
+		String[] products = (String[])session.getAttribute("list");
+				
+		if(products != null) {
+			for(int i=0; i<products.length; i++) {
+				out.print("product" + (i+1) + ": " + products[i] + "<br>");
+			}
 		}
 		else {
-			// 쿠기가 있다면 이름을 변경하여 추가 하겠다.
-			c = new Cookie("product"+(cookies.length+1), product);
+			out.println("장바구니 비었음<br><br>");
 		}
-		response.addCookie(c);
-		
-		out.println("<html><body>Product추가"+"<br>");
-		out.println("<a href='CartBasketCookie'>장바구니 보기</a>");
+				
+		out.println("<a href='products.html'>상품 선택 페이지</a><br>");
+		out.println("<a href='CartDelete'>장바구니 비우기</a>");
 		out.println("</body></html>");
-		
-		
 	}
 
 }
