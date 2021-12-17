@@ -14,8 +14,8 @@ import ch18.mvc.dao.EmpDAO;
 import ch18.mvc.vo.EmpDTO;
 
 
-@WebServlet("/ch18/emp")
-public class EmpSelectServletDAO extends HttpServlet {
+@WebServlet("/ch18/emppool")
+public class EmpSelectServletDAO_Pool extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	

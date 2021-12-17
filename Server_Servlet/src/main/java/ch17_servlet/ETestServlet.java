@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 //http://localhost:8080/Server_Servlet/xyz/kkk.go  -> FTestServlet
 //http://localhost:8080/Server_Servlet/my/ss.go    -> FTestServlet
 
-//(2) Extension(확장자) Pattern
+//(2) Extension(확장자) Pattern : 슬래쉬 쓰지 말것!!!
 //@WebServlet("*.do")
 public class ETestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

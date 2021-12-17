@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(function(){
+		$("#btn").click(
+				function(){
+					$.ajax({
+						url:"resource.html",
+						datatype:"html",
+						success:function(data){
+							$("#con").html(data);
+						}
+					});
+				});
+	
+	});
+</script>
+</head>
+<body>
+<button id="btn">서버로부터 데이터 가져오기</button><br><br>
+<div id="con">데이터 가져오기전</div>
+</body>
+</html>

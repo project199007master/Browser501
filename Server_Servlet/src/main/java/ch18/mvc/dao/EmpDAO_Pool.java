@@ -7,20 +7,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import ch18.mvc.vo.EmpDTO;
 
-public class EmpDAO {	
+public class EmpDAO_Pool {			
 	
-	Connection conn = null;
-	PreparedStatement pstmt = null;
+	DataSource ds;	
 	
-	public EmpDAO() {
+	public EmpDAO_Pool() {
 		
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Context initContext = new InitialContext();
+			// lookup : 사전을 찾는다
+			Context envContext  = (Context)initContext.lookup("java:/comp/env");
+			ds = (DataSource)envContext.lookup("jdbc/OracleDB");
 			
-		} catch (ClassNotFoundException e) {
-			System.out.println("드라이버 이상");
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} 
 		
 	}
@@ -28,13 +36,17 @@ public class EmpDAO {
 	public ArrayList<EmpDTO> select(){
 		
 		ArrayList<EmpDTO> al = new ArrayList<EmpDTO>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		String sql = "select empno,ename,sal,deptno from emp";
 		
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				al.add(new EmpDTO(rs.getInt("empno"), rs.getString("ename"), rs.getInt("sal"), rs.getInt("deptno")));
 			}
@@ -48,7 +60,7 @@ public class EmpDAO {
 		}
 		finally {
 			try {
-				conn.close();
+				con.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -59,14 +71,5 @@ public class EmpDAO {
 		
 	}
 	
-	public void connectDB() {
-		try {
-			
-			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-			conn = DriverManager.getConnection(url, "scott", "scott");
-		}
-		 catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
-	}
+	
 }

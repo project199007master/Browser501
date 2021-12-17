@@ -2,9 +2,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>서버의 데이터를 대상 엘리먼트에 삽입하기</title>
+<title>메뉴 넣기</title>
 
 <style>
+	#box{
+		width:1000px;
+		
+	}
+	#d1{
+		float:left;
+	}
+	#d2{
+		float:right;
+	}
+	
+	#menu1, #menu2{
+		background:yellow;
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
@@ -38,14 +52,17 @@ $(function() {
 </script>
 </head>
 <body>
-<div >
+<div id="box">
+<div id="d1">
 <a href="#" id="menu1">메뉴보기1</a><br>
 <span id="msg1"></span>
 </div>
 
-<div>
+<div id="d2">
 <a href="#" id="menu2">메뉴보기2</a><br>
 <span id="msg2"></span>
+</div>
+
 </div>
 
 
