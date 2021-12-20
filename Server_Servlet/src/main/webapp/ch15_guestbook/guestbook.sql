@@ -9,4 +9,5 @@ create table guestbook_message(
 );
 
 -- auto_increment(mysql) => sequence(oracle)
-Create sequence message_id_seq;
+Create sequence message_id_seq
+minvalue 0;
